@@ -25,6 +25,26 @@ export class HeaderComponent implements OnInit {
       }
     });
   }
+  headerchange(){
+    window.addEventListener('scroll',function(e){
+      var pos=this.window.scrollY;
+      var heights = this.window.innerHeight;
+      var widths = this.window.innerWidth;
+      var changeheight=heights-80;
+      if(widths>=800)
+      {
+        if(pos>=changeheight)
+        {
+          this.document.getElementById("wrap").classList.add("change");
+        }
+        else
+        {
+          this.document.getElementById("wrap").classList.remove("change");
+        }
+      }
+      })
+  }
 }
 var obj=new HeaderComponent();
 obj.submenuoff();
+obj.headerchange();
