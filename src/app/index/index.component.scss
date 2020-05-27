@@ -101,7 +101,7 @@
 .one{
     background-image: url(slider.png);
     z-index: 5;
-    display: none;
+    display: block;
 }
 .two{
     background-image: url(slider1.png);
@@ -111,14 +111,17 @@
 .three{
     background-image: url(slider2.jpg);
     z-index: 3;
+    display: none;
 }
 .four{
     background-image: url(slider3.png);
     z-index: 2;
+    display: none;
 }
 .five{
     background-image: url(slider4.png);
     z-index: 1;
+    display: none;
 }
 @media screen and(max-width:800px)
 {
