@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Settings</title>
+        <style>
+            html, body {
+            width: 100%;
+            height: 100%;
+            margin:0;
+            padding:0;
+            }
+            header{
+                height:60px;
+                width:100%;
+                position: fixed;
+                top:0;
+                left:0;
+                background-color: rgb(31, 31, 31);
+            }
+            .container{
+                height:100%;
+                width:100%;
+                position: absolute;
+                top:0;
+            }
+            .wrapper{
+                margin-top:60px;
+                display: grid;
+                grid-template-columns: repeat(2,50%);
+                grid-template-rows: calc(100vh - 60px);
+            }
+            .side--image{
+                grid-column: span 1;
+            }
+            .wave{
+                height:100%;
+                width:100%;
+                background-image: url("2.png");
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position:bottom left;
+            }
+            .wave--img{
+                position: absolute;
+                width:30vw;
+                height: calc(80vh - 80px);
+                background-image:url("Asset 6.svg");
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: bottom left;
+                left: 5vw;
+                bottom:5vh;
+                filter: hue-rotate(10deg);
+            }
+            .content{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            form{
+                width:60%;
+                text-align: center;
+            }
+            img{
+				height: 200px;
+			}
+
+			h2{
+				margin: 15px 0;
+				color: #333;
+				text-transform: uppercase;
+				font-size: 2.9rem;
+                font-weight: 600;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+			}
+
+			.input-div{
+				position: relative;
+				display: grid;
+				grid-template-columns: 7% 93%;
+				margin: 25px 0;
+				padding: 5px 0;
+				border-bottom: 2px solid #d9d9d9;
+			}
+
+			.input-div.one{
+				margin-top: 0;
+			}
+
+			.i{
+				color: #d9d9d9;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+                font-size: 1.5em;
+                transform: translateY(7px);
+			}
+
+			.i i{
+				transition: .3s;
+			}
+
+			.input-div > div{
+				position: relative;
+				height: 45px;
+			}
+
+			.input-div > div > h5{
+				position: absolute;
+				left: 10px;
+				top: 0%;
+				transform: translateY(-50%);
+				color: #999;
+				font-size: 18px;
+				transition: .3s;
+			}
+
+			.input-div:before, .input-div:after{
+				content: '';
+				position: absolute;
+				bottom: -2px;
+				width: 0%;
+				height: 2px;
+				background-color: #d33838;
+				transition: .4s;
+			}
+
+			.input-div:before{
+				right: 50%;
+			}
+
+			.input-div:after{
+				left: 50%;
+			}
+
+			.input-div.focus:before, .input-div.focus:after{
+				width: 50%;
+			}
+
+			.input-div.focus > div > h5{
+				top: -15px;
+				font-size: 15px;
+			}
+
+			.input-div.focus > .i > i{
+				color: #d33838;
+			}
+
+			.input-div > div > input{
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				border: none;
+				outline: none;
+				background: none;
+				padding: 0.5rem 0.7rem;
+				font-size: 1.2rem;
+				color: #555;
+				font-family: 'poppins', sans-serif;
+			}
+
+			.input-div.pass{
+				margin-bottom: 4px;
+			}
+
+			a{
+				display: block;
+				text-align: right;
+				text-decoration: none;
+				color: #999;
+				font-size: 0.9rem;
+				transition: .3s;
+			}
+
+			a:hover{
+				color: #d33838;
+			}
+
+			.btn{
+				display: block;
+				width: 100%;
+				height: 50px;
+				border-radius: 25px;
+				outline: none;
+				border: none;
+				background-image: linear-gradient(to right, #ff0000, #d33838, hsl(0, 89%, 32%));
+				background-size: 200%;
+				font-size: 1.2rem;
+				color: #fff;
+				font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+				text-transform: uppercase;
+				margin: 10px;
+				cursor: pointer;
+				transition: .5s;
+			}
+            .btn:nth-child(1){
+                background-image: linear-gradient(to right, #6d6d6d, #5c5c5c, hsl(0, 0%, 55%));;
+            }
+			.btn:hover{
+				background-position: right;
+			}
+            .submit--buttons{
+                display: flex;
+                margin: 10px;
+            }
+            .avatar--container{
+                display: inline-flex;
+            }
+            .pic--change{
+                height:200px;
+                width:200px;
+                border-radius: 50%;
+                background-color: transparent;
+                outline:0;
+                position: absolute;
+                z-index: 1;
+            }
+            .avatar--container:hover .pic--change{
+                background-color: rgba(0, 0, 0, 0.452);
+            }
+            .choose-img--input{
+                width:10px;
+                height:0px;
+                opacity: 0;
+                position: absolute;
+                overflow: hidden;
+                z-index:-1 ;
+            }
+            .choose-img--input + label{
+                font-size: 7em;
+                font-weight: bolder;
+                color:white;
+                position: absolute;
+                top:50%;
+                right: 50%;
+                transform: translate(2rem,-3.5rem);
+                z-index: 1;
+                display: none;
+            }
+            .avatar--container:hover .choose-img--input + label{
+                display: block;
+            }
+            @media screen and (max-width: 600px){
+                .wrapper{
+                    grid-template-columns: 1fr;
+                }
+                .side--image{
+                    display: none;
+                }
+            }
+            @media screen and (max-width: 350px){
+                .submit--buttons{
+                    display: block;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <header></header>
+        <div class="container">
+            <div class="wrapper">
+                <div class="side--image">
+                    <div class="wave"><div class="wave--img"></div></div>
+                </div>
+                <div class="content">
+                    <form>
+                        <div class="avatar--container">
+                            <img src="avatar.svg" alt="img">
+                            <div class="pic--change"><input type="file" id="choose-img" name="choose-img" class="choose-img--input" accept="image/*"> <label for="choose-img">+</label></div>
+                        </div>
+                        
+                        <div class="input-div one">
+                        <div class="i">
+                                <i class="fa fa-user" ></i>
+                        </div>
+                        <div class="div">
+                                <h5>Username</h5>
+                                <input type="text" class="input">
+                        </div>
+                        </div>
+                        <div class="input-div pass">
+                            <div class="i"> 
+                                    <i class="fa fa-lock" ></i>
+                            </div>
+                            <div class="div">
+                                    <h5>Current Password</h5>
+                                    <input type="password" class="input">
+                            </div>
+                        </div>
+                        <div class="input-div pass">
+                            <div class="i"> 
+                                    <i class="fa fa-lock" ></i>
+                            </div>
+                            <div class="div">
+                                    <h5>New Password</h5>
+                                    <input type="text" class="input">
+                            </div>
+                        </div>
+                        <div class="input-div">
+                            <div class="i"> 
+                                    <i class="fa fa-lock" ></i>
+                            </div>
+                            <div class="div">
+                                    <h5>Location</h5>
+                                    <input type="text" class="input">
+                            </div>
+                        </div>
+                        <div class="submit--buttons">
+                            <input type="submit" class="btn" value="Cancel">
+                            <input type="submit" class="btn" value="Update">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

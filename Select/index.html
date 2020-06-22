@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Select</title>
+        <style>
+            body{
+                margin:0;
+                padding:0;
+                background-color: lightgray;
+            }
+            .input--holder{
+                margin-top: 20px;
+                width:60%;
+                height:50px;
+                border-radius: 50px;
+                padding: 0 3px 0 15px;
+                border: none;
+                outline:0;
+                font-size: 20px;
+                color: black;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background-color: white;
+                margin-left: 50%;
+                transform: translateX(-50%);
+            }
+            .input--holder input{
+                width:80%;
+                height:80%;
+                border: none;
+                outline:0;
+                font-size: 1.2rem;
+
+            }
+            .input--holder input:focus ~ .datalist{
+                display: block;
+            }
+            .datalist{
+                max-height:214px;
+                min-width:30%;
+                overflow-y: auto;
+                position: absolute;
+                display: none;
+                top:90%;
+                left:10%;
+                background-color: whitesmoke;
+                list-style: none;
+                padding: 0 10px;
+                text-align: center;
+            }
+            .datalist li{
+                padding:10px;
+            }
+            .datalist li::after{
+                position: absolute;
+                margin-top: 10px;
+                content:'';
+                height:1px;
+                width:100%;
+                display: block;
+                background-color: black;
+                transform: translateX(-20px);
+            }
+            .datalist li:last-child::after{
+                display: none;
+            }
+            .datalist li:hover{
+                background-color: red;
+                color:white;
+            }
+            .input--holder input::placeholder{
+                font-size: 1rem;
+            }
+            .search-button{
+                height:45px;
+                width:45px;
+                background-color: rgb(145, 145, 145);
+                border-radius: 50%;
+            }
+            .search-button:hover{
+                background-color: #000000;
+            }
+            .search-button:hover .svg-icon path,
+            .search-button:hover .svg-icon polygon,
+            .search-button:hover .svg-icon rect {
+                fill: white;
+            } 
+            .svg-icon {
+                width: 30px;
+                height: 30px;
+                margin-top:50%;
+                margin-left:50%;
+                transform: translate(-50%,-55%);
+            }
+            
+            .svg-icon path,
+            .svg-icon polygon,
+            .svg-icon rect {
+                fill: #000000;
+            }
+            
+            .svg-icon circle {
+                stroke: #000000;
+                stroke-width: 1;
+            }
+        </style>
+    </head>
+    <body>
+          <div class="input--holder">
+            <input id="input--bar" type="text" class="searchbar" placeholder="Enter event name, type or place" onkeydown="listfilter(event)">
+            <div id="list" class="datalist">
+                <li>Race</li>
+                <li>Chess</li>
+                <li>Carrom</li>
+                <li>Debate</li>
+                <li>Football</li>
+                <li>Ludo</li>
+                <li>Hockey</li>
+            </div>
+            <div class="search-button">
+                <svg class="svg-icon" viewBox="0 0 20 20">
+                    <path fill="none" d="M19.129,18.164l-4.518-4.52c1.152-1.373,1.852-3.143,1.852-5.077c0-4.361-3.535-7.896-7.896-7.896
+                        c-4.361,0-7.896,3.535-7.896,7.896s3.535,7.896,7.896,7.896c1.934,0,3.705-0.698,5.078-1.853l4.52,4.519
+                        c0.266,0.268,0.699,0.268,0.965,0C19.396,18.863,19.396,18.431,19.129,18.164z M8.567,15.028c-3.568,0-6.461-2.893-6.461-6.461
+                        s2.893-6.461,6.461-6.461c3.568,0,6.46,2.893,6.46,6.461S12.135,15.028,8.567,15.028z"></path>
+                </svg>
+            </div>
+        </div>
+        <script>
+            function listfilter(e){
+                var list=document.getElementById("list").querySelectorAll("li");
+                var input=document.getElementById("input--bar").value;
+                var str=input+e.key;
+                if(e.key=="Backspace")
+                    str=input.substr(0,input.length-1);
+                else
+                    str=input+e.key;
+                for(var i=0;i<list.length;i++)
+                {
+                    if(list[i].innerText.toLowerCase().includes(str.toLowerCase()))
+                        list[i].style.display="block";
+                    else
+                        list[i].style.display="none";
+                }
+            }
+        </script>
+    </body>
+</html>

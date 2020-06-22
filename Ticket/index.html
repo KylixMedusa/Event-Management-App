@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+        <style>
+            body{
+                margin:0;
+            }
+            header{
+                height:60px;
+                width:100%;
+                background-color: rgb(43, 43, 43);
+            }
+            .contents{
+                margin: 100px 50px;
+                text-align: center;
+            }
+            h1{
+                font-size: 3rem;
+                font-weight: 700;
+                letter-spacing: 4px;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+            }
+            p{
+                font-size: 1rem;
+                color:gray;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            }
+            h5{
+                font-size: 1.3rem;
+                font-weight: 800px;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            }
+            button{
+				width: 200px;
+				height: 50px;
+				border-radius: 25px;
+				outline: none;
+				border: none;
+				background-image: linear-gradient(to right, #ff0000, #d33838, hsl(0, 89%, 32%));
+				background-size: 200%;
+				font-size: 1.2rem;
+				color: #fff;
+				font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+				text-transform: uppercase;
+				margin: 10px;
+				cursor: pointer;
+				transition: .5s;
+			}
+			button:hover{
+				background-position: right;
+			}
+            small{
+                color:gray;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            }
+            h6{
+                color:black;
+                font-size: 1rem;
+                font-weight: 700;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            }
+            span{
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                color:gray;
+            }
+            @media screen and (max-width: 600px) {
+                .contents{
+                    margin:50px 10px;
+                }
+                
+            }
+        </style>
+    </head>
+    <body>
+        <header></header>
+        <section class="main">
+                <div class="contents">
+                    
+                    <p>Ticket ID : </p><h1 id="ticket_key">E010837459</h1>
+                    
+                    <hr>
+                    <br>
+                                    <h5><strong>Name : </strong>Dipan Roy</h5>
+                    <p><strong>Registered at : </strong>2019-01-14 23:58:14                &nbsp;&nbsp;
+                    <strong>Ticket Price : </strong>Rs. 300/-</p>
+                                        <h4 style="color:#1abc9c">Thank You For Confirming Your Payment</h4>
+                        <img src="http://mindwebs.org/qrCodes/E010837459.png" height="50%" alt="QR Code" title="Show This At the Entry">
+                                    <br>
+                    <div class="no-print">
+                    <button class="cpy--ticket" >Copy Ticket ID</button><br><br><button class="btn btn-primary btn-rounded" onclick="copyUrlFunc()" title="Invite Your Friends, and they will get Rs. 50/- off">Invite via Referral</button><br><br><button class="btn btn-primary btn-rounded" onclick="printFunc()">Print Ticket</button><br><br></div>
+                    <small>PhonePay, PayTM, Tez, UPI or Offline Payment Modes are only available now.</small>
+                    <br>
+                    <p></p><br>
+                    <h5>4 - 5 July 2019, 10:00 Hrs</h5>
+                    <h6>IEM Auditorium</h6>
+                    <p>Management Building, D-1, Sector V, Salt Lake</p>
+                    <span>Please be seated by 9.30 AM, Entry starts from 9 AM. And do carry your laptop both the days.</span>
+                    <br><hr>
+                </div>
+        </section>
+        <script>   
+    var copied = false;
+    
+    function copyUrlFunc() {
+          var dummy = document.createElement("textarea");
+        document.body.appendChild(dummy);
+        dummy.value = "http://mindwebs.org/events/techtronista/eventRegister?referral=" + document.getElementById("ticket_key").textContent;
+        dummy.select();
+        document.execCommand("copy");
+        document.body.removeChild(dummy);
+        alert("Invite Link Copied to Clipboard!");
+        copied = true;
+    }
+    
+    function copyFunc() {
+          var dummy = document.createElement("textarea");
+        document.body.appendChild(dummy);
+        dummy.value = document.getElementById("ticket_key").textContent;
+        //dummy.value = E010837459;
+        dummy.select();
+        document.execCommand("copy");
+        document.body.removeChild(dummy);
+        alert("Ticket ID Copied to Clipboard!");
+        copied = true;
+    }
+    function copyFunc2() {
+          var dummy = document.createElement("textarea");
+        document.body.appendChild(dummy);
+        dummy.value = document.getElementById("upi_id").textContent;
+        //dummy.value = E010837459;
+        dummy.select();
+        document.execCommand("copy");
+        document.body.removeChild(dummy);
+        alert("UPI ID Copied to Clipboard!");
+        copied = true;
+    }
+    function copyFunc3() {
+          var dummy = document.createElement("textarea");
+        document.body.appendChild(dummy);
+        //dummy.value = document.getElementById("upi_id").textContent;
+        dummy.value = "9163034929";
+        dummy.select();
+        document.execCommand("copy");
+        document.body.removeChild(dummy);
+        alert("UPI/PayTM No. Copied to Clipboard!");
+        copied = true;
+    }
+    function printFunc() {
+    var mywindow = window.open('', 'PRINT', 'height=600,width=900');
+    
+        mywindow.document.write('<html><head><title>' + document.title  + '</title>');
+        mywindow.document.write('<style> @media print{ .no-print { display: none !important;} } </style>');
+        mywindow.document.write('<link href="assets/css/bootstrap.min.css" rel="stylesheet"><link href="assets/css/font-awesome.min.css" rel="stylesheet"><link href="assets/css/et-line.css" rel="stylesheet"><link href="assets/css/ionicons.min.css" rel="stylesheet"><link href="assets/css/owl.carousel.min.css" rel="stylesheet"><link href="assets/css/owl.theme.default.min.css" rel="stylesheet"><link rel="stylesheet" href="assets/css/animate.min.css"><link href="assets/css/main.css" rel="stylesheet"></head><body>');
+        
+        mywindow.document.write('<h2><center>' + document.title  + ' Ticket Reciept</center></h1>');
+        mywindow.document.write(document.getElementById("allowPrint").innerHTML);
+        
+        mywindow.document.write('<br><hr><center>Generated By <strong>MinD Webs</strong> Ticketing System. Generated at : 2020-06-07 13:48:38</center>');
+        mywindow.document.write('</body></html>');
+    
+        mywindow.document.close(); // necessary for IE >= 10
+        mywindow.focus(); // necessary for IE >= 10*/
+        setTimeout(function(){mywindow.print();},1000);
+        //mywindow.print();
+        setTimeout(function(){mywindow.close();}, 1500);
+    //  mywindow.close();
+    
+        return true;	
+    }
+    </script>
+    </body>
+</html>

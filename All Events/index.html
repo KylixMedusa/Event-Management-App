@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>All Events</title>
+        <style>
+            html,body{
+                margin:0;
+                padding:0;
+                width:100%;
+            }
+            .header{
+                background-color: rgb(36, 36, 36);
+                height:80px;
+                position: fixed;
+                top:0;
+                left:0;
+                width:100%;
+                z-index: 2;
+            }
+            .container{
+                width:100%;
+                height: 300px;
+                background-image: url("allevents.svg");
+                background-size:cover;
+                background-position: bottom;
+            }
+            .top--contents{
+                position: absolute;
+                top: 80px;
+                text-align: center;
+                width:100%;
+            }
+            .input--holder{
+                margin-top: 20px;
+                width:60%;
+                height:50px;
+                border-radius: 50px;
+                padding: 0 3px 0 15px;
+                border: none;
+                outline:0;
+                font-size: 20px;
+                color: black;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background-color: white;
+                margin-left: 50%;
+                transform: translateX(-50%);
+            }
+            .top--contents input{
+                width:80%;
+                height:80%;
+                border: none;
+                outline:0;
+
+            }
+            .top--contents input::placeholder{
+                font-size: 1rem;
+            }
+            .search-button{
+                height:45px;
+                width:45px;
+                background-color: rgb(145, 145, 145);
+                border-radius: 50%;
+            }
+            .svg-icon {
+                width: 30px;
+                height: 30px;
+                margin-top:50%;
+                margin-left:50%;
+                transform: translate(-50%,-55%);
+            }
+            
+            .svg-icon path,
+            .svg-icon polygon,
+            .svg-icon rect {
+                fill: #000000;
+            }
+            
+            .svg-icon circle {
+                stroke: #000000;
+                stroke-width: 1;
+            }
+            .content{
+                grid-row: 2/span 1;
+                grid-column: 2/span 1;
+                width:100%;
+                margin:0;
+                display: grid;
+                grid-template-columns: repeat(4,1fr);
+                grid-gap: 0.7rem;
+            }
+            .filter--button{
+                margin-top: 20px;
+                font-size: 1.5rem;
+                letter-spacing: 2px;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                display: inline-flex;
+            }
+            .filter--no{
+                height:2rem;
+                width:2rem;
+                background-color: red;
+                color:white;
+                font-weight: bold;
+                border-radius: 50%;
+                margin-right: 10px;
+                text-align: center;
+                
+            }
+            .filter-container{
+                margin-top: 20px;
+            }
+            .filter--applied{
+                width:60vw;
+                height: 25px;
+                display: inline-block;
+                overflow-x: auto;
+                
+            }
+            .tag{
+                height:20px;
+                width:20%;
+                background-color: whitesmoke;
+                display: inline-flex;
+                justify-content: space-between;
+                padding:2px 5px;
+                border-radius: 10px;
+            }
+            .tag p{
+                margin:0;
+                font-size: 1rem;
+                width: 80%;
+                overflow-x: auto;
+            }
+            .event-viewer{
+                height:300px;
+                width:1fr;
+                grid-column: span 1;
+                background-color: whitesmoke;
+            }
+            .content--container{
+                display: grid;
+                grid-template-rows: 20px 1fr 20px;
+                grid-template-columns: 30px 1fr 30px;
+            }
+            @media screen and (max-width: 1000px){
+                .content{
+                    grid-template-columns: repeat(3,1fr);
+                }
+            }
+            @media screen and (max-width: 800px)
+            {
+                .filter--applied, .input--holder{
+                    width:80vw;
+                }
+            }
+            @media screen and (max-width: 600px){
+                .content{
+                    grid-template-columns: repeat(2,1fr);
+                }
+            }
+            @media screen and (max-width: 400px){
+                .content{
+                    grid-template-columns: repeat(1,1fr);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header"></div>
+        <div class="container">
+            <div class="top--contents">
+                <div class="input--holder">
+                    <input type="text" class="searchbar" placeholder="Enter event name, type or place">
+                    <div class="search-button">
+                        <svg class="svg-icon" viewBox="0 0 20 20">
+                            <path fill="none" d="M19.129,18.164l-4.518-4.52c1.152-1.373,1.852-3.143,1.852-5.077c0-4.361-3.535-7.896-7.896-7.896
+                                c-4.361,0-7.896,3.535-7.896,7.896s3.535,7.896,7.896,7.896c1.934,0,3.705-0.698,5.078-1.853l4.52,4.519
+                                c0.266,0.268,0.699,0.268,0.965,0C19.396,18.863,19.396,18.431,19.129,18.164z M8.567,15.028c-3.568,0-6.461-2.893-6.461-6.461
+                                s2.893-6.461,6.461-6.461c3.568,0,6.46,2.893,6.46,6.461S12.135,15.028,8.567,15.028z"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="filter--button"><div class="filter--no">0</div>Filter</div>
+                <div class="filter-container">
+                    <div class="filter--applied">
+                        <div class="tag"><p>Lorem Ipsum</p><i class="fa fa-cross">+</i></div>
+                        <div class="tag"><p>Lorem Ipsum</p><i class="fa fa-cross">+</i></div>
+                        <div class="tag"><p>Lorem Ipsum</p><i class="fa fa-cross">+</i></div>
+                        <div class="tag"><p>Lorem Ipsum</p><i class="fa fa-cross">+</i></div>
+                        <div class="tag"><p>Lorem Ipsum</p><i class="fa fa-cross">+</i></div>
+                        <div class="tag"><p>Lorem Ipsum</p><i class="fa fa-cross">+</i></div>
+                        <div class="tag"><p>Lorem Ipsum</p><i class="fa fa-cross">+</i></div>
+                        <div class="tag"><p>Lorem Ipsum</p><i class="fa fa-cross">+</i></div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="content--container">
+            <div class="content">
+                <div class="event-viewer">
+                    <div class="image"></div>
+                    <div class="info">
+    
+                    </div>
+                </div>
+                <div class="event-viewer">
+                    <div class="image"></div>
+                    <div class="info">
+    
+                    </div>
+                </div>
+                <div class="event-viewer">
+                    <div class="image"></div>
+                    <div class="info">
+    
+                    </div>
+                </div>
+                <div class="event-viewer">
+                    <div class="image"></div>
+                    <div class="info">
+    
+                    </div>
+                </div>
+                <div class="event-viewer">
+                    <div class="image"></div>
+                    <div class="info">
+    
+                    </div>
+                </div>
+                <div class="event-viewer">
+                    <div class="image"></div>
+                    <div class="info">
+    
+                    </div>
+                </div>
+                <div class="event-viewer">
+                    <div class="image"></div>
+                    <div class="info">
+    
+                    </div>
+                </div>
+                <div class="event-viewer">
+                    <div class="image"></div>
+                    <div class="info">
+    
+                    </div>
+                </div>
+                <div class="event-viewer">
+                    <div class="image"></div>
+                    <div class="info">
+    
+                    </div>
+                </div>
+                <div class="event-viewer">
+                    <div class="image"></div>
+                    <div class="info">
+    
+                    </div>
+                </div>
+                <div class="event-viewer">
+                    <div class="image"></div>
+                    <div class="info">
+    
+                    </div>
+                </div>
+        </div>
+        
+        </div>
+        <script type="text/javascript">
+        </script>
+    </body>
+</html>

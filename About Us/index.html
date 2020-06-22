@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Stopwatch</title>
+        <style>
+            html,body{
+                margin:0;
+                width:100vw;
+                background-color: white;
+                display: flex;
+                justify-content: center;
+            }
+            .container{
+                margin-top: 100px;
+                display: grid;
+                grid-template-columns: 300px 300px 300px;
+                grid-template-rows: 350px;
+                grid-gap: 3rem;
+            }
+            .box{
+                display: grid;
+                background-color: whitesmoke;
+                grid-template-columns: repeat(3,100px);
+                grid-template-rows: 100px 200px 50px;
+                border-radius: 20px;
+            }
+            .box:last-child{
+                grid-column: 2/span 1;
+            }
+            .box:hover{
+                transform: scale(1.1);
+                box-shadow: 0 0 15px rgb(168, 168, 168);
+            }
+            .img{
+                grid-column: span 1;
+                grid-row: span 1;
+                background-color: aliceblue;
+                border-radius: 50%;
+                height:80px;
+                width:80px;
+                border:1px solid rgb(44, 44, 44);
+                margin:10px 0px 0px 20px ;
+            }
+            .details{
+                grid-column: 2/span 2;
+                grid-row: 1/span 1;
+                text-align: right;
+                margin:10px 20px 0px 0px ;
+            }
+            .desc{
+                grid-column: span 3;
+                grid-row: 2/span 1;
+                padding: 20px;
+            }
+            .socials{
+                grid-column: span 3;
+                grid-row: 3/span 1;
+                display:flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .socials div{
+                height:40px;
+                width:40px;
+                margin: 0 5px;
+                background-color: black;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .socials div i{
+                font-size: 25px;
+                color:rgb(197, 197, 197);
+            }
+            .name{
+                font-size: 1.2rem;
+                font-weight: 700;
+            }
+            .info{
+                margin-top: 5px;
+            }
+            @media screen and (max-width: 1000px){
+                .container{
+                grid-template-columns: 300px 300px;
+            }
+            .box:last-child{
+                grid-column: span 1;
+            }
+            }
+            @media screen and (max-width: 760px){
+                .container{
+                grid-template-columns: 300px;
+            }
+            }
+        </style>
+    </head>
+    <body >
+        <div class="container">
+            <div class="box one">
+                <div class="img"></div>
+                <div class="socials">
+                    <div class="facebook"><i  class="fa fa-facebook"></i></div>
+                    <div class="instagram"><i class="fa fa-instagram"></i></div>
+                    <div class="github"><i class="fa fa-github"></i></div>
+                    <div class="twitter"><i class="fa fa-twitter"></i></div>
+                    <div class="linkedin"><i class="fa fa-linkedin"></i></div>
+                </div>
+                <div class="details">
+                    <div class="name">Dipan Roy</div>
+                    <div class="info">Backend Developer</div>
+                </div>
+                <div class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</div>
+            </div>
+            <div class="box two">
+                <div class="img"></div>
+                <div class="socials">
+                    <div class="facebook"><i  class="fa fa-facebook"></i></div>
+                    <div class="instagram"><i class="fa fa-instagram"></i></div>
+                    <div class="github"><i class="fa fa-github"></i></div>
+                    <div class="twitter"><i class="fa fa-twitter"></i></div>
+                    <div class="linkedin"><i class="fa fa-linkedin"></i></div>
+                </div>
+                <div class="details">
+                    <div class="name">Ayushman Bilas Thakur</div>
+                    <div class="info">Frontend Developer</div>
+                </div>
+                <div id="desc2" class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</div>
+            </div>
+            <div class="box three">
+                <div class="img"></div>
+                <div class="socials">
+                    <div class="facebook"><i  class="fa fa-facebook"></i></div>
+                    <div class="instagram"><i class="fa fa-instagram"></i></div>
+                    <div class="github"><i class="fa fa-github"></i></div>
+                    <div class="twitter"><i class="fa fa-twitter"></i></div>
+                    <div class="linkedin"><i class="fa fa-linkedin"></i></div>
+                </div>
+                <div class="details">
+                    <div class="name">Aayush Agarwal</div>
+                    <div class="info">UI/UX designer <b></b> Frontend Developer</div>
+                </div>
+                <div id="desc3" class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</div>
+            </div>
+            <div class="box three">
+                <div class="img"></div>
+                <div class="socials">
+                    <div class="facebook"><i  class="fa fa-facebook"></i></div>
+                    <div class="instagram"><i class="fa fa-instagram"></i></div>
+                    <div class="github"><i class="fa fa-github"></i></div>
+                    <div class="twitter"><i class="fa fa-twitter"></i></div>
+                    <div class="linkedin"><i class="fa fa-linkedin"></i></div>
+                </div>
+                <div class="details">
+                    <div class="name">Aayush Agarwal</div>
+                    <div class="info">UI/UX designer <b></b> Frontend Developer</div>
+                </div>
+                <div id="desc3" class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</div>
+            </div>
+        </div>
+    </body>

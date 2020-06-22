@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Header</title>
+        <style>
+            body{
+                height:300vh;
+                margin:0;
+                background-color: gray;
+            }
+            .wrapper{
+                position: fixed;
+                top:0;
+                left:0;
+                height:80px;
+                width:100%;
+                background-color:transparent;
+                color: black;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                transition: all 300ms ease-in-out;
+            }
+            .logo{
+                width:100px;
+                height:40px;
+                background-color: rgb(192, 192, 192);
+            }
+            nav{
+                display: flex;
+                justify-content: space-evenly;
+                list-style: none;
+                min-width: 50vw;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            }
+            
+            .wrapper nav li:hover::after{
+                width:100%;
+            }
+            .change{
+                background-color: rgb(34, 34, 34);
+                color: white;
+                box-shadow: 2px 0px 15px rgb(92, 92, 92);
+            }
+            .setup--city{
+                position: fixed;
+                width:100%;
+                margin: 0;
+                bottom:0;
+                left:0;
+                background-color: whitesmoke;
+                text-align: center;
+                display: none;
+                box-shadow: -2px 0px 15px rgb(92, 92, 92);
+            }
+            .main--cities{
+                width:100%;
+                text-align: center;
+                margin-top: calc(5vh - 3vw);
+            }
+            .main--cities div{
+                display: inline-flex;
+                height: 80px;
+                width:80px;
+                margin:3vw 3vw 0 3vw;
+                background-color: rgb(172, 172, 172);
+            }
+            .main--cities div:hover{
+                box-shadow: 0px 0px 15px rgb(190, 190, 190);
+            }
+            .input--holder{
+                width:70vw;
+                height: 40px;
+                margin: 5vh 0 5vh 0;
+                border-radius: 5vh;
+                background-color: white;
+                margin-left:50%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0px 5% 0px 5%;
+                transform: translateX(-50%);
+
+            }
+            .setup--city input{
+                outline:0;
+                border:none;
+                width:80%;
+            }
+            .setup--city button{
+                border: 2px solid black;
+                height:40px;
+                border-radius: 10px;
+                padding: 10px;
+                margin-bottom: 5vh;
+            }
+            .input--holder button{
+                height: 30px;
+                width:30px;
+                border-radius: 50%;
+                margin-bottom: 0vh;
+            }
+            .setup--city button:hover{
+                background-color: red;
+                border-color: red;
+                color:white;
+            }
+            .setup--city button:focus{
+                outline: 0;
+            }
+            .all--cities{
+                display: none;
+                list-style: none;
+                height:25vw;
+                overflow: auto;
+                margin:10px;
+            }
+            .all--cities li{
+                margin:10px;
+            }
+            @media screen and (max-width: 800px){
+                .wrapper{
+                    background-color: rgb(34, 34, 34);
+                    color:white;
+                    justify-content: space-between;
+                    box-shadow: 2px 0px 15px rgb(92, 92, 92);
+                }
+                .logo{
+                    margin-left: 10vw;
+                }
+                .sidebar--button{
+                    height:36px;
+                    width:36px;
+                    border-radius: 10px;
+                    border: 2px solid white;
+                    margin-right: 10vw;
+                    display: flexbox;
+                    justify-content: center;
+                }
+                .sidebar--button div{
+                    height:2px;
+                    width:60%;
+                    background-color: white;
+                    margin:5px;
+                    margin-left: 50%;
+                    transform: translate(-50%, 1px);
+                    border-radius: 2px;
+                }
+                .sidebar--button div:nth-child(1)
+                {
+                    margin-top: 25%;
+                }
+                .sidebar--button:hover{
+                    background-color: red;
+                    border-color: red;
+                }
+                .wrapper nav{
+                    width:100px;
+                    position: absolute;
+                    top:80px;
+                    right:0;
+                    background-color: whitesmoke;
+                    color:black;
+                    display: none;
+                    text-align: center;
+                }
+                .wrapper nav li{
+                    display: block;
+                    margin: 5vh 0 5vh 0;
+                }
+            }
+            @media screen and (min-width: 800px) {
+                .wrapper nav li::after{
+                    content: '';
+                    display: block;
+                    height:3px;
+                    width:0%;
+                    background-color: red;
+                    border-radius: 5px;
+                    margin-top: 3px;
+                    transition: all 300ms ease-in-out;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap" class="wrapper">
+            <div class="logo"></div>
+            <div id="sidebar-button" class="sidebar--button" onclick="sidebaropen()"><div></div><div></div><div></div></div>
+            <nav id="sidebar">
+                <li>HOME</li>
+                <li>EVENTS</li>
+                <li onclick="opencity()">SET UP CITY<i></i></li>
+                <li>LOGIN</li>
+            </nav>
+        </div>
+        <div id="setup-city" class="setup--city">
+            <div id="main-cities" class="main--cities">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="input--holder">
+                <input type="text" placeholder="Enter name of city"/>
+                <button><i></i></button>
+            </div>
+            <button id="view-cities" onclick="view_all_cities()">VIEW ALL CITIES</button>
+            <div id="all-cities" class="all--cities">
+                <li>Hyderabad</li>
+                <li>Kolkata</li>
+                <li>Pune</li>
+                <li>Mumbai</li>
+                <li>Indore</li>
+                <li>Vishakapatnam</li>
+                <li>Ahmedabad</li>
+                <li>Prayagraj</li>
+                <li>Agra</li>
+                <li>Delhi</li>
+                <li>Patiala</li>
+                <li>Bangalore</li>
+                <li>Surat</li>
+                <li>Chandigarh</li>
+            </div>
+        </div>
+        <script type="text/javascript">
+            function view_all_cities(){
+                if(document.getElementById("view-cities").innerText=="VIEW ALL CITIES")
+                {
+                    document.getElementById("main-cities").style.display="none";
+                    document.getElementById("all-cities").style.display="block";
+                    document.getElementById("view-cities").innerText="VIEW LESS CITIES";
+                }
+                else{
+                    document.getElementById("main-cities").style.display="block";
+                    document.getElementById("all-cities").style.display="none";
+                    document.getElementById("view-cities").innerText="VIEW ALL CITIES";
+                }
+            }
+            function opencity()
+            {
+                document.getElementById("setup-city").style.display="block";
+            }
+            function sidebaropen()
+            {
+                var widths = this.window.innerWidth;
+                if(widths<=800)
+                {
+                    if(document.getElementById("sidebar").style.display=="none")
+                        document.getElementById("sidebar").style.display="block";
+                    else
+                        document.getElementById("sidebar").style.display="none";
+                }
+            }
+            function sidebarclose(){
+                var widths = this.window.innerWidth;
+                if(widths<=800)
+                {
+                    window.addEventListener('click',function(e){
+                        if((e.target != document.getElementById("sidebar")) && (document.getElementById("sidebar").style.display=="block") && (e.target != (document.getElementById("sidebar-button"))))
+                        {
+                            document.getElementById("sidebar").style.display="none";
+                        }
+                    })
+                }
+            }
+            sidebarclose();
+            function headerchange(){
+                window.addEventListener('scroll',function(e){
+                var pos=this.window.scrollY;
+                var heights = this.window.innerHeight;
+                var widths = this.window.innerWidth;
+                var changeheight=heights-80;
+                if(widths>800)
+                {
+                    if(pos>=changeheight)
+                    {
+                    this.document.getElementById("wrap").classList.add("change");
+                    }
+                    else
+                    {
+                    this.document.getElementById("wrap").classList.remove("change");
+                    }
+                }
+                })
+            }
+            headerchange();
+        </script>
+    </body>
+</html>
+
+
+
+

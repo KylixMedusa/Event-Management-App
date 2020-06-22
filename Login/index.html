@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+        <style>
+            body{
+                margin:0;
+            }
+            .container{
+                position: fixed;
+                top:50%;
+                left:50%;
+                transform: translate(-50%,-50%);
+                padding:3rem;
+                background-color: whitesmoke;
+                border-radius: 30px;
+                box-shadow: 0px 0px 15px rgb(151, 151, 151);
+                min-width: 300px;
+            }
+            form{
+                text-align: center;
+            }
+            img{
+				height: 100px;
+			}
+
+			h2{
+				margin: 15px 0;
+				color: #333;
+				text-transform: uppercase;
+				font-size: 2.9rem;
+                font-weight: 600;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+			}
+
+			.input-div{
+				position: relative;
+				display: grid;
+				grid-template-columns: 7% 93%;
+				margin: 25px 0;
+				padding: 5px 0;
+				border-bottom: 2px solid #d9d9d9;
+			}
+
+			.input-div.one{
+				margin-top: 0;
+			}
+
+			.i{
+				color: #d9d9d9;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+                font-size: 1.5em;
+                transform: translateY(7px);
+			}
+
+			.i i{
+				transition: .3s;
+			}
+
+			.input-div > div{
+				position: relative;
+				height: 45px;
+			}
+
+			.input-div > div > h5{
+				position: absolute;
+				left: 10px;
+				top: 0%;
+				transform: translateY(-50%);
+				color: #999;
+				font-size: 18px;
+				transition: .3s;
+			}
+
+			.input-div:before, .input-div:after{
+				content: '';
+				position: absolute;
+				bottom: -2px;
+				width: 0%;
+				height: 2px;
+				background-color: #d33838;
+				transition: .4s;
+			}
+
+			.input-div:before{
+				right: 50%;
+			}
+
+			.input-div:after{
+				left: 50%;
+			}
+
+			.input-div.focus:before, .input-div.focus:after{
+				width: 50%;
+			}
+
+			.input-div.focus > div > h5{
+				top: -15px;
+				font-size: 15px;
+			}
+
+			.input-div.focus > .i > i{
+				color: #d33838;
+			}
+
+			.input-div > div > input{
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				border: none;
+				outline: none;
+				background: none;
+				padding: 0.5rem 0.7rem;
+				font-size: 1.2rem;
+				color: #555;
+				font-family: 'poppins', sans-serif;
+			}
+
+			.input-div.pass{
+				margin-bottom: 4px;
+			}
+
+			a{
+				display: block;
+				text-align: right;
+				text-decoration: none;
+				color: #999;
+				font-size: 0.9rem;
+				transition: .3s;
+			}
+
+			a:hover{
+				color: #d33838;
+			}
+
+			.btn{
+				display: block;
+				width: 100%;
+				height: 50px;
+				border-radius: 25px;
+				outline: none;
+				border: none;
+				background-image: linear-gradient(to right, #ff0000, #d33838, hsl(0, 89%, 32%));
+				background-size: 200%;
+				font-size: 1.2rem;
+				color: #fff;
+				font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+				text-transform: uppercase;
+				margin: 1rem 0;
+				cursor: pointer;
+				transition: .5s;
+			}
+			.btn:hover{
+				background-position: right;
+			}
+            @media screen and (max-width: 800px)
+            {
+                body{
+                    font-size: 50px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="wrapper">
+                <form>
+                    <i class="fa fa-cross"></i>
+					<img alt="img">
+					<h2 class="title">Welcome</h2>
+					<div class="input-div one">
+					<div class="i">
+							<i class="fa fa-user" ></i>
+					</div>
+					<div class="div">
+							<h5>Username</h5>
+							<input type="text" class="input">
+					</div>
+					</div>
+					<div class="input-div pass">
+					<div class="i"> 
+							<i class="fa fa-lock" ></i>
+					</div>
+					<div class="div">
+							<h5>Password</h5>
+							<input type="password" class="input">
+					</div>
+					</div>
+					<a href="#">Forgot Password?</a>
+					<input type="submit" class="btn" value="Login">
+				</form>
+            </div>
+        </div>
+        <script type="text/javascript" >
+            const inputs = document.querySelectorAll(".input");
+    
+    
+            function addcl(){
+                let parent = this.parentNode.parentNode;
+                parent.classList.add("focus");
+            }
+    
+            function remcl(){
+                let parent = this.parentNode.parentNode;
+                if(this.value == ""){
+                    parent.classList.remove("focus");
+                }
+            }
+    
+    
+            inputs.forEach(input => {
+                input.addEventListener("focus", addcl);
+                input.addEventListener("blur", remcl);
+            });
+        </script>
+    </body>
+</html>
